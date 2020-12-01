@@ -29,8 +29,8 @@ def three_elements_summing_to(sorted_list : List[int], total: int) -> List[int]:
     left: List[int] = sorted_list[:bisect.bisect_left(sorted_list, cutoff)]
     for x in left:
         right: List[int] = sorted_list[bisect.bisect_left(sorted_list, x):]
-        right.remove(x)
-        result: List[int] = two_elements_summing_to(sorted_list, total - x)
+        right.remove(x) # there is probably a better way to do this
+        result: List[int] = two_elements_summing_to(right, total - x)
         if result:
             result.append(x)
             return result
